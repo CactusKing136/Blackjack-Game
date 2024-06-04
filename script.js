@@ -5,6 +5,7 @@ let player = {
 
 let cards = []
 let sum = 0
+let compSum = 0
 let hasBlackJack = false
 let isAlive = false
 let message = ""
@@ -13,6 +14,8 @@ let sumEl = document.getElementById("sum-el")
 let cardsEl = document.getElementById("cards-el")
 let playerEl = document.getElementById("player-el")
 let stickEl = document.querySelector(".stick-btn")
+let compSumEl = document.getElementById("comp-sum-el")
+let compCardsEl = document.getElementById("comp-cards-el")
 
 playerEl.textContent = player.name + ": $" + player.chips
 
@@ -64,7 +67,3 @@ function newCard() {
         renderGame()        
     }
 }
-
-stickEl.addEventListener("click", () => {
-    startGame()
-})

@@ -24,14 +24,15 @@ h1 {
 button {
     color: #016f32;
     width: 150px;
-    background: goldenrod;
-    height: 100px;
-    width: 100px;
+    background: rgb(230, 183, 64);
+    height: 150px;
+    width: 150px;
     font-weight: bold;
     border: none;
     border-radius: 50%;
     margin: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+    font-size: 20px;
 }
 
 button:hover {
