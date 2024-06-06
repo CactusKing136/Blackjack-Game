@@ -14,6 +14,7 @@ body {
 h1 {
     color: goldenrod;
     font-size: 70px;
+    margin-bottom: 0;
 }
 
 #message-el {
@@ -21,22 +22,29 @@ h1 {
     font-size: 30px;
 }
 
-button {
+.game-button {
     color: #016f32;
     width: 150px;
-    background: rgb(230, 183, 64);
+    background: goldenrod;
     height: 150px;
     width: 150px;
     font-weight: bold;
     border: none;
     border-radius: 50%;
     margin: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     font-size: 20px;
+    transition: ease-in-out;
+    transition-duration: 0.1s;
 }
 
-button:hover {
+.game-button:hover {
     cursor: pointer;
+    font-size: 23px;
+}
+
+.game-button:active {
+    font-size: 20px;
 }
 
 .players {
@@ -48,3 +56,88 @@ button:hover {
     padding: 30px 0;
     border-radius: 40px;
 }
+
+.player-info {
+    display: flex;
+    justify-content: space-around;
+    width: 300px;
+}
+
+.name-input, .bet-input {
+    background-color: goldenrod;
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 20px
+}
+
+.name-input-div {
+    display: flex;
+}
+
+.name-credits, .credits, .bet{
+    margin-bottom: 0;
+    font-size: 30px;
+}
+
+.name-input-btn, .bet-input-btn{
+    height: 40px;
+    width: 80px;
+    background-color: goldenrod;
+    border-radius: 10px;
+    border: none;
+    margin-left: -30px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #016f32;
+    transition: ease-in-out;
+    transition-duration: 0.1s;
+    margin-top: 20px;
+}
+
+.name-input-btn:hover, .bet-input-btn:hover, .undo-bet:hover {
+    cursor: pointer;
+    font-size: 23px;
+}
+
+.name-input-btn:active, .bet-input-btn:active, .undo-bet:active {
+    font-size: 20px;
+}
+
+::placeholder {
+    color: #016f32;
+    opacity: 0.5;
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.name-credits {
+    display: flex;
+    margin-right: 10px;
+    justify-content: space-between;
+}
+
+.undo-bet {
+    height: 40px;
+    width: 140px;
+    background-color: goldenrod;
+    border-radius: 10px;
+    border: none;
+    margin-left: -30px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #016f32;
+    transition: ease-in-out;
+    transition-duration: 0.1s;
+    margin-top: 20px;
+}
+
+.undo-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+}
+

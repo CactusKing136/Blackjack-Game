@@ -21,12 +21,34 @@
         </div>
         
         <div class="buttons">
-            <div><button onclick="startGame()">NEW GAME</button></div>
-            <button onclick="newCard()">HIT ME!</button>
-            <button class="stick-btn">STICK!</button>
+            <div class="new-game-btn">
+                <button class="game-button" onclick="startGame()">NEW GAME</button>
+            </div>
+            <div class="game-buttons">
+            </div>
         </div>
 
-        <p id="player-el"></p>
+        <div class="name-input-div">
+            <input type="text" class="name-input" placeholder="Enter your name...">
+            <button class="name-input-btn">GO!</button>
+        </div>
+
+        <div class="name-input-div">
+            <input type="text" class="bet-input" placeholder="Enter your bet...">
+            <button class="bet-input-btn">BET!</button>
+        </div>
+
+        <div class="undo-div"><button class="undo-bet">UNDO BET</button></div>
+
+        <div class="player-info">
+            <div class="name-credits-div">
+                <p class="name-credits"></p>
+            </div>
+            <p class="bet"></p>
+        </div>
+
+        
+
         <script src="script.js"></script>
     </body>
 </html>
