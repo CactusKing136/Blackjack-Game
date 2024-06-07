@@ -3,9 +3,10 @@ let player = {
     credits: 200
 }
 
-let cards = []
+let playerCards = []
+let botCards = []
 let sum = 0
-let compSum = 0
+let botSum = 0
 let hasBlackJack = false
 let isAlive = false
 let message = ""
@@ -14,9 +15,9 @@ let messageEl = document.getElementById("message-el")
 let sumEl = document.getElementById("sum-el")
 let cardsEl = document.getElementById("cards-el")
 let playerEl = document.getElementById("player-el")
-let stickEl = document.querySelector(".stick-btn")
-let compSumEl = document.getElementById("comp-sum-el")
-let compCardsEl = document.getElementById("comp-cards-el")
+let standEl = document.querySelector(".stand-btn")
+let botSumEl = document.getElementById("comp-sum-el")
+let botCardsEl = document.getElementById("comp-cards-el")
 let nameBtnEl = document.querySelector(".name-input-btn")
 let nameInputEl = document.querySelector(".name-input")
 let nameCreditsEl = document.querySelector(".name-credits")
@@ -28,6 +29,9 @@ let betEl = document.querySelector(".bet")
 let creditsEl = document.querySelector(".credits")
 let nameInputDiv = document.querySelector(".name-input-div")
 let undoBtnEl = document.querySelector(".undo-bet")
+let betInputDiv = document.querySelector(".bet-input-div")
+let undoDiv = document.querySelector(".undo-div")
+let hitMeEl = document.querySelector(".hit-me-btn")
 
 function getRandomCard() {
     let randomNumber = Math.floor( Math.random()*13 ) + 1
@@ -40,20 +44,30 @@ function getRandomCard() {
     }
 }
 
-function startGame() {
+function startPlayerGame() {
     isAlive = true
     hasBlackJack = false
     let firstCard = getRandomCard()
     let secondCard = getRandomCard()
-    cards = [firstCard, secondCard]
+    playerCards = [firstCard, secondCard]
+    sum = firstCard + secondCard
+    renderGame()
+}
+
+function startBotGame() {
+    isAlive = true
+    hasBlackJack = false
+    let firstCard = getRandomCard()
+    let secondCard = getRandomCard()
+    botCards = [firstCard, secondCard]
     sum = firstCard + secondCard
     renderGame()
 }
 
 function renderGame() {
     cardsEl.textContent = "Cards: "
-    for (let i = 0; i < cards.length; i++) {
-        cardsEl.textContent += cards[i] + " "
+    for (let i = 0; i < playerCards.length; i++) {
+        cardsEl.textContent += playerCards[i] + " "
     }
     
     sumEl.textContent = "Sum: " + sum
@@ -69,23 +83,37 @@ function renderGame() {
 
     messageEl.textContent = message
 
-    gameButtonsEl.innerHTML = `<button class="game-button hit-me-btn" onclick="newCard()">HIT ME!</button>
-    <button class="game-button stick-btn" class="stick-btn">STICK!</button>`
+    gameButtonsEl.innerHTML = `<button class="game-button hit-me-btn">HIT ME!</button>
+    <button class="game-button stick-btn" class="stand-btn">STAND!</button>`
+
+
 
     if (isAlive === false || hasBlackJack === true) {
         gameButtonsEl.innerHTML = ""
         newGameBtnEl.innerHTML = `<button class="game-button" onclick="startGame()">NEW GAME</button>`
+        betInputDiv.innerHTML = `<input type="text" class="bet-input" placeholder="Enter your bet...">
+        <button class="bet-input-btn">BET!</button>`
+        undoDiv.innerHTML = `<button class="undo-bet">UNDO BET</button>`
         
     }
 }
 
 
-function newCard() {
+function newPlayerCard() {
     if (isAlive === true && hasBlackJack === false) {
         let card = getRandomCard()
         sum += card
-        cards.push(card)
+        playerCards.push(card)
         renderGame()        
+    }
+}
+
+function newBotCard() {
+    if (isAlive === true && hasBlackJack === false) {
+        let card = getRandomCard()
+        sum += card
+        botCards.push(card)
+        renderGame()
     }
 }
 
@@ -116,6 +144,23 @@ undoBtnEl.addEventListener("click", () => {
     creditsBet = 0
     betEl.textContent = `Bet: £${creditsBet}`
     nameCreditsEl.textContent = `${player.name}: £${player.credits}`
+})
+
+newGameBtnEl.addEventListener("click", () => {
+    startPlayerGame()
+
+    nameInputDiv.innerHTML = ""
+    betInputDiv.innerHTML = ""
+    undoDiv.innerHTML = ""
+    
+})
+
+stickEl.addEventListener("click", () => {
+
+})
+
+hitMeEl.addEventListener("click", () => {
+    newPlayerCard()
 })
 
 
